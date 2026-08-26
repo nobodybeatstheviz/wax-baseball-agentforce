@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentDSLEnabled>true</agentDSLEnabled>
+    <agentType>AgentforceEmployeeAgent</agentType>
+    <botMlDomain>
+        <label>Baseball Scout</label>
+        <name>Baseball_Scout</name>
+    </botMlDomain>
+    <botSource>None</botSource>
+    <description>Answers questions about the baseball games the user has personally attended, grounded in the Attended Games Data 360 DMO.</description>
+    <label>Baseball Scout</label>
+    <logPrivateConversationData>false</logPrivateConversationData>
+    <richContentEnabled>true</richContentEnabled>
+    <sessionTimeout>0</sessionTimeout>
+    <type>InternalCopilot</type>
+</Bot>

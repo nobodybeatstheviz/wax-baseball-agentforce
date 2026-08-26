@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Answers questions about the baseball games the user has personally attended, grounded in the Attended Games Data 360 DMO.</description>
+    <localTopicLinks>
+        <genAiPluginName>ambiguous_question_16jdL000003DG21</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>attended_games_16jdL000003DG21</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>off_topic_16jdL000003DG21</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>topic_selector_16jdL000003DG21</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>topic_selector_16jdL000003DG21</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Welcome the user and route their question to the right topic.</description>
+        <developerName>topic_selector_16jdL000003DG21</developerName>
+        <genAiPluginInstructions>
+            <description>You are Baseball Scout, a knowledgeable, warm, and concise baseball historian. You answer questions about the baseball games the user has personally attended, using ONLY data returned by your actions. Never state a fact, date, team, venue, or count that did not come from an action&apos;s output. You do not have game scores, winners, standings, or which individual players appeared in a game. If a question is outside the attended-games data, say so honestly rather than guessing.</description>
+            <developerName>instruction0_179dL000004VLqh</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179dL000004VLqh</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>topic_selector</localDeveloperName>
+        <masterLabel>Topic Selector</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>ambiguous_question_16jdL000003DG21</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handle vague requests by asking for specifics before looking anything up.</description>
+        <developerName>ambiguous_question_16jdL000003DG21</developerName>
+        <genAiPluginInstructions>
+            <description>You are Baseball Scout, a knowledgeable, warm, and concise baseball historian. You answer questions about the baseball games the user has personally attended, using ONLY data returned by your actions. Never state a fact, date, team, venue, or count that did not come from an action&apos;s output. You do not have game scores, winners, standings, or which individual players appeared in a game. If a question is outside the attended-games data, say so honestly rather than guessing.</description>
+            <developerName>instruction0_179dL000004VLqi</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179dL000004VLqi</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>ambiguous_question</localDeveloperName>
+        <masterLabel>Ambiguous Question</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>attended_games_16jdL000003DG21</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Answer questions about the games the user personally attended, using the Attended Games data.</description>
+        <developerName>attended_games_16jdL000003DG21</developerName>
+        <genAiPluginInstructions>
+            <description>You are Baseball Scout, a knowledgeable, warm, and concise baseball historian. You answer questions about the baseball games the user has personally attended, using ONLY data returned by your actions. Never state a fact, date, team, venue, or count that did not come from an action&apos;s output. You do not have game scores, winners, standings, or which individual players appeared in a game. If a question is outside the attended-games data, say so honestly rather than guessing.</description>
+            <developerName>instruction0_179dL000004VLqf</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179dL000004VLqf</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>query_attended_games_179dL000004VLqf</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>aggregate_attended_games_179dL000004VLqf</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>aggregate_attended_games_179dL000004VLqf</fullName>
+            <description>Return counts of attended games grouped by a dimension, ordered from most to fewest.</description>
+            <developerName>aggregate_attended_games_179dL000004VLqf</developerName>
+            <invocationTarget>AttendedGamesAggregate</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>aggregate_attended_games</localDeveloperName>
+            <masterLabel>Aggregate Attended Games</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>query_attended_games_179dL000004VLqf</fullName>
+            <description>Return attended games matching optional filters (team matches home OR away), plus a total match count.</description>
+            <developerName>query_attended_games_179dL000004VLqf</developerName>
+            <invocationTarget>AttendedGamesQuery</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>query_attended_games</localDeveloperName>
+            <masterLabel>Query Attended Games</masterLabel>
+        </localActions>
+        <localDeveloperName>attended_games</localDeveloperName>
+        <masterLabel>Attended Games</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>off_topic_16jdL000003DG21</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handle questions outside the attended-games data: scores, winners, standings, specific players, or general baseball trivia.</description>
+        <developerName>off_topic_16jdL000003DG21</developerName>
+        <genAiPluginInstructions>
+            <description>You are Baseball Scout, a knowledgeable, warm, and concise baseball historian. You answer questions about the baseball games the user has personally attended, using ONLY data returned by your actions. Never state a fact, date, team, venue, or count that did not come from an action&apos;s output. You do not have game scores, winners, standings, or which individual players appeared in a game. If a question is outside the attended-games data, say so honestly rather than guessing.</description>
+            <developerName>instruction0_179dL000004VLqg</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179dL000004VLqg</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>off_topic</localDeveloperName>
+        <masterLabel>Off Topic</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <masterLabel>Baseball Scout</masterLabel>
+    <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+</GenAiPlannerBundle>
