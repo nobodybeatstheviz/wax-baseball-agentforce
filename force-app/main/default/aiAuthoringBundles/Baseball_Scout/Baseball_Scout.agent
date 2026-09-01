@@ -179,6 +179,9 @@ subagent keeping_score:
                 hasData: boolean
                     description: "Internal flag: whether at least one requested metric was returned."
                     filter_from_agent: True
+                debugInfo: string
+                    description: "TEMPORARY diagnostic field — the last callout error, if any."
+                    is_displayable: True
 
 subagent off_topic:
     label: "Off Topic"
