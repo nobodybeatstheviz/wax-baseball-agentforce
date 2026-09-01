@@ -7,7 +7,7 @@
         <name>Baseball_Scout</name>
     </botMlDomain>
     <botSource>None</botSource>
-    <description>Answers questions about the baseball games the user has personally attended, grounded in the Attended Games Data 360 DMO.</description>
+    <description>Answers questions about the baseball games the user has personally attended (Attended Games DMO) and governed Keeping Score metrics (Keeping_Score SDM, four-engine parity verified).</description>
     <label>Baseball Scout</label>
     <logPrivateConversationData>false</logPrivateConversationData>
     <richContentEnabled>true</richContentEnabled>

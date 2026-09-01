@@ -1,0 +1,28 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "groupBy" : {
+      "title" : "Group By",
+      "description" : "Dimension to group by: home_team, away_team, venue, season, gameType, or state.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "season" : {
+      "title" : "Season",
+      "description" : "Optional year filter.",
+      "lightning:type" : "lightning__integerType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "team" : {
+      "title" : "Team",
+      "description" : "Optional team filter; matches either the home or away team.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

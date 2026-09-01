@@ -1,0 +1,31 @@
+name: "Baseball Scout Keeping Score Tests"
+subjectType: AGENT
+subjectName: Baseball_Scout
+
+testCases:
+  - utterance: "How many home runs have I witnessed in person?"
+    expectedTopic: keeping_score
+    expectedActions:
+      - query_keeping_score
+    expectedOutcome: "Agent reports 400 home runs witnessed, sourced from the query_keeping_score action's output."
+
+  - utterance: "How many Hall of Famers have I seen play?"
+    expectedTopic: keeping_score
+    expectedActions:
+      - query_keeping_score
+    expectedOutcome: "Agent reports 44 Hall of Famers seen, sourced from the query_keeping_score action's output."
+
+  - utterance: "What's my win rate when I go see the Yankees?"
+    expectedTopic: keeping_score
+    expectedActions:
+      - query_keeping_score
+    expectedOutcome: "Agent reports the Yankees' (NYA) attended win rate as 90 wins in 143 decided games, roughly 63%, sourced from the query_keeping_score action's output."
+
+  - utterance: "How many games have I been to and how many different stadiums?"
+    expectedTopic: keeping_score
+    expectedActions:
+      - query_keeping_score
+    expectedOutcome: "Agent reports 178 games attended and 22 unique stadiums, sourced from the query_keeping_score action's output."
+
+  - utterance: "Did I see Derek Jeter play?"
+    expectedOutcome: "Agent honestly declines - it does not have individual player appearance data outside of the aggregate Hall of Famers Seen metric - and does not guess."
