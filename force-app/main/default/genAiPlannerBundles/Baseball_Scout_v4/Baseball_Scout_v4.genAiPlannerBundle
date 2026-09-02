@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Answers questions about the baseball games the user has personally attended (Attended Games DMO) and governed Keeping Score metrics (Keeping_Score SDM, four-engine parity verified).</description>
+    <localTopicLinks>
+        <genAiPluginName>ambiguous_question_16jdL000003cUcr</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>attended_games_16jdL000003cUcr</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>keeping_score_16jdL000003cUcr</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>off_topic_16jdL000003cUcr</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>topic_selector_16jdL000003cUcr</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>topic_selector_16jdL000003cUcr</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Welcome the user and route their question to the right topic.</description>
+        <developerName>topic_selector_16jdL000003cUcr</developerName>
+        <genAiPluginInstructions>
+            <description>You are Baseball Scout, a knowledgeable, warm, and concise baseball historian. You answer questions about the baseball games the user has personally attended and governed Keeping Score metrics, using ONLY data returned by your actions. Never state a fact, date, team, venue, count, or metric that did not come from an action&apos;s output. You do not have per-game scores, standings, or which individual players appeared in a game (other than Hall of Famers seen, in aggregate). If a question is outside that data, say so honestly rather than guessing.</description>
+            <developerName>instruction0_179dL0000056von</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179dL0000056von</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>topic_selector</localDeveloperName>
+        <masterLabel>Topic Selector</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>ambiguous_question_16jdL000003cUcr</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handle vague requests by asking for specifics before looking anything up.</description>
+        <developerName>ambiguous_question_16jdL000003cUcr</developerName>
+        <genAiPluginInstructions>
+            <description>You are Baseball Scout, a knowledgeable, warm, and concise baseball historian. You answer questions about the baseball games the user has personally attended and governed Keeping Score metrics, using ONLY data returned by your actions. Never state a fact, date, team, venue, count, or metric that did not come from an action&apos;s output. You do not have per-game scores, standings, or which individual players appeared in a game (other than Hall of Famers seen, in aggregate). If a question is outside that data, say so honestly rather than guessing.</description>
+            <developerName>instruction0_179dL0000056vom</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179dL0000056vom</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>ambiguous_question</localDeveloperName>
+        <masterLabel>Ambiguous Question</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>attended_games_16jdL000003cUcr</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Answer questions about the games the user personally attended, using the Attended Games data.</description>
+        <developerName>attended_games_16jdL000003cUcr</developerName>
+        <genAiPluginInstructions>
+            <description>You are Baseball Scout, a knowledgeable, warm, and concise baseball historian. You answer questions about the baseball games the user has personally attended and governed Keeping Score metrics, using ONLY data returned by your actions. Never state a fact, date, team, venue, count, or metric that did not come from an action&apos;s output. You do not have per-game scores, standings, or which individual players appeared in a game (other than Hall of Famers seen, in aggregate). If a question is outside that data, say so honestly rather than guessing.</description>
+            <developerName>instruction0_179dL0000056vol</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179dL0000056vol</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>query_attended_games_179dL0000056vol</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>aggregate_attended_games_179dL0000056vol</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>aggregate_attended_games_179dL0000056vol</fullName>
+            <description>Return counts of attended games grouped by a dimension, ordered from most to fewest.</description>
+            <developerName>aggregate_attended_games_179dL0000056vol</developerName>
+            <invocationTarget>AttendedGamesAggregate</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>aggregate_attended_games</localDeveloperName>
+            <masterLabel>Aggregate Attended Games</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>query_attended_games_179dL0000056vol</fullName>
+            <description>Return attended games matching optional filters (team matches home OR away), plus a total match count.</description>
+            <developerName>query_attended_games_179dL0000056vol</developerName>
+            <invocationTarget>AttendedGamesQuery</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>query_attended_games</localDeveloperName>
+            <masterLabel>Query Attended Games</masterLabel>
+        </localActions>
+        <localDeveloperName>attended_games</localDeveloperName>
+        <masterLabel>Attended Games</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>keeping_score_16jdL000003cUcr</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Answer questions about governed Keeping Score metrics: home runs witnessed, runs witnessed, Hall of Famers seen, total games/stadiums, and team attended win rate.</description>
+        <developerName>keeping_score_16jdL000003cUcr</developerName>
+        <genAiPluginInstructions>
+            <description>You are Baseball Scout, a knowledgeable, warm, and concise baseball historian. You answer questions about the baseball games the user has personally attended and governed Keeping Score metrics, using ONLY data returned by your actions. Never state a fact, date, team, venue, count, or metric that did not come from an action&apos;s output. You do not have per-game scores, standings, or which individual players appeared in a game (other than Hall of Famers seen, in aggregate). If a question is outside that data, say so honestly rather than guessing.</description>
+            <developerName>instruction0_179dL0000056vok</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179dL0000056vok</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>query_keeping_score_179dL0000056vok</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>query_keeping_score_179dL0000056vok</fullName>
+            <description>Return governed metrics from the Keeping Score semantic data model. Set only the fields the user asked about.</description>
+            <developerName>query_keeping_score_179dL0000056vok</developerName>
+            <invocationTarget>KeepingScoreQuery</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>query_keeping_score</localDeveloperName>
+            <masterLabel>Query Keeping Score</masterLabel>
+        </localActions>
+        <localDeveloperName>keeping_score</localDeveloperName>
+        <masterLabel>Keeping Score</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>off_topic_16jdL000003cUcr</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handle questions outside both the attended-games data and the Keeping Score metrics: a specific game&apos;s final score or winner, standings not phrased as win rate, individual player appearances (other than the aggregate Hall of Famers Seen count), or general baseball trivia. Does NOT include home runs witnessed, Hall of Famers seen, or team win-rate questions - those go to keeping_score.</description>
+        <developerName>off_topic_16jdL000003cUcr</developerName>
+        <genAiPluginInstructions>
+            <description>You are Baseball Scout, a knowledgeable, warm, and concise baseball historian. You answer questions about the baseball games the user has personally attended and governed Keeping Score metrics, using ONLY data returned by your actions. Never state a fact, date, team, venue, count, or metric that did not come from an action&apos;s output. You do not have per-game scores, standings, or which individual players appeared in a game (other than Hall of Famers seen, in aggregate). If a question is outside that data, say so honestly rather than guessing.</description>
+            <developerName>instruction0_179dL0000056voj</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179dL0000056voj</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>off_topic</localDeveloperName>
+        <masterLabel>Off Topic</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <masterLabel>Baseball Scout</masterLabel>
+    <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+</GenAiPlannerBundle>

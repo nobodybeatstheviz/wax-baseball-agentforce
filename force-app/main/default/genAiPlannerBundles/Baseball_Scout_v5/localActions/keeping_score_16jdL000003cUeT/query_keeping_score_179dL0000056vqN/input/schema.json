@@ -1,0 +1,21 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "metrics" : {
+      "title" : "Metrics",
+      "description" : "Comma-separated metric keywords to include: homeRuns, runs, hallOfFamers, gamesAndStadiums.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "winRateTeam" : {
+      "title" : "Win Rate Team",
+      "description" : "Team code (e.g. NYA) to compute attended win rate for; blank to skip.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

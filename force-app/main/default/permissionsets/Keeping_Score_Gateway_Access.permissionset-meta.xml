@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Principal access to Keeping_Score_Gateway_Cred so KeepingScoreQuery can call the semantic-engine gateway. Baseball_Scout is an Employee Agent and runs as the logged-in user: assign to every user who talks to it.</description>
+    <externalCredentialPrincipalAccesses>
+        <enabled>true</enabled>
+        <externalCredentialPrincipal>Keeping_Score_Gateway_Cred-Keeping_Score_Principal</externalCredentialPrincipal>
+    </externalCredentialPrincipalAccesses>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Keeping Score Gateway Access</label>
+</PermissionSet>

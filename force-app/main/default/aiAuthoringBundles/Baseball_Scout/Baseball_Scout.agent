@@ -154,34 +154,23 @@ subagent keeping_score:
             outputs:
                 homeRunsWitnessed: number
                     description: "Total home runs witnessed, or null if not requested."
-                    is_displayable: True
                 runsWitnessed: number
                     description: "Total runs witnessed, or null if not requested."
-                    is_displayable: True
                 hallOfFamersSeen: number
                     description: "Count of distinct Hall of Famers seen, or null if not requested."
-                    is_displayable: True
                 gamesAttended: number
                     description: "Total games attended, or null if not requested."
-                    is_displayable: True
                 uniqueStadiums: number
                     description: "Distinct stadiums visited, or null if not requested."
-                    is_displayable: True
                 winRateTeam: string
                     description: "The team code the win rate was computed for."
-                    is_displayable: True
                 teamWinsAttended: number
                     description: "Wins for winRateTeam in attended games, or null."
-                    is_displayable: True
                 teamGamesDecided: number
                     description: "Decided games for winRateTeam in attended games, or null."
-                    is_displayable: True
                 hasData: boolean
                     description: "Internal flag: whether at least one requested metric was returned."
                     filter_from_agent: True
-                debugInfo: string
-                    description: "TEMPORARY diagnostic field — the last callout error, if any."
-                    is_displayable: True
 
 subagent off_topic:
     label: "Off Topic"

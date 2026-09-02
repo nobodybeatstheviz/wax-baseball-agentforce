@@ -1,0 +1,78 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "gamesAttended" : {
+      "title" : "Games Attended",
+      "description" : "Total games attended, or null if not requested.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "hallOfFamersSeen" : {
+      "title" : "Hall Of Famers Seen",
+      "description" : "Count of distinct Hall of Famers seen, or null if not requested.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "hasData" : {
+      "title" : "Has Data",
+      "description" : "Internal flag: whether at least one requested metric was returned.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false
+    },
+    "homeRunsWitnessed" : {
+      "title" : "Home Runs Witnessed",
+      "description" : "Total home runs witnessed, or null if not requested.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "runsWitnessed" : {
+      "title" : "Runs Witnessed",
+      "description" : "Total runs witnessed, or null if not requested.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "teamGamesDecided" : {
+      "title" : "Team Games Decided",
+      "description" : "Decided games for winRateTeam in attended games, or null.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "teamWinsAttended" : {
+      "title" : "Team Wins Attended",
+      "description" : "Wins for winRateTeam in attended games, or null.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "uniqueStadiums" : {
+      "title" : "Unique Stadiums",
+      "description" : "Distinct stadiums visited, or null if not requested.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "winRateTeam" : {
+      "title" : "Win Rate Team",
+      "description" : "The team code the win rate was computed for.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

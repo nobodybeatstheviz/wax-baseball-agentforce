@@ -28,4 +28,5 @@ testCases:
     expectedOutcome: "Agent reports 178 games attended and 22 unique stadiums, sourced from the query_keeping_score action's output."
 
   - utterance: "Did I see Derek Jeter play?"
+    expectedTopic: off_topic
     expectedOutcome: "Agent honestly declines - it does not have individual player appearance data outside of the aggregate Hall of Famers Seen metric - and does not guess."

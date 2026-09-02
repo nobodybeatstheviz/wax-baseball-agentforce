@@ -29,8 +29,6 @@ public with sharing class KeepingScoreQuery {
         public Decimal teamGamesDecided;
         @InvocableVariable(label='Has Data' description='Whether at least one requested metric was returned.')
         public Boolean hasData;
-        @InvocableVariable(label='Debug Info' description='TEMPORARY diagnostic field — the last callout error, if any.')
-        public String debugInfo;
     }
 
     @InvocableMethod(label='Query Keeping Score Metrics' description='Return governed metrics (home runs, runs, Hall of Famers seen, games/stadiums, team win rate) from the Keeping Score semantic data model. Set only the fields the user asked about.')
@@ -52,7 +50,6 @@ public with sharing class KeepingScoreQuery {
     private static Result runOne(Request req) {
         Result res = new Result();
         res.hasData = false;
-        lastError = null;
 
         Set<String> wanted = new Set<String>();
         if (req.metrics != null) {
@@ -117,11 +114,8 @@ public with sharing class KeepingScoreQuery {
             }
         }
 
-        res.debugInfo = lastError;
         return res;
     }
-
-    private static String lastError;
 
     // One gateway call for one group of same-table fields. Returns the raw
     // `rows` array (each row a Map with a "values" list), or an empty list on
@@ -152,17 +146,17 @@ public with sharing class KeepingScoreQuery {
         try {
             httpRes = new Http().send(httpReq);
         } catch (Exception e) {
-            lastError = 'EXCEPTION: ' + e.getMessage();
+            System.debug(LoggingLevel.ERROR, 'KeepingScoreQuery callout exception: ' + e.getMessage());
             return new List<Object>();
         }
         if (httpRes.getStatusCode() != 200 && httpRes.getStatusCode() != 201) {
-            lastError = 'HTTP ' + httpRes.getStatusCode() + ': ' + httpRes.getBody().left(200);
+            System.debug(LoggingLevel.ERROR, 'KeepingScoreQuery non-2xx: ' + httpRes.getStatusCode() + ' ' + httpRes.getBody());
             return new List<Object>();
         }
 
         Map<String, Object> parsed = (Map<String, Object>) JSON.deserializeUntyped(httpRes.getBody());
         if (parsed.get('status') != 'SUCCESS') {
-            lastError = 'NON-SUCCESS: ' + httpRes.getBody().left(200);
+            System.debug(LoggingLevel.ERROR, 'KeepingScoreQuery non-SUCCESS status: ' + httpRes.getBody());
             return new List<Object>();
         }
         Map<String, Object> queryResults = (Map<String, Object>) parsed.get('queryResults');
