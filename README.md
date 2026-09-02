@@ -70,6 +70,7 @@ Scope is enforced **structurally**, not just by instruction: the actions can onl
 |---|---|---|
 | `query_attended_games` | `apex://AttendedGamesQuery` | Six optional filters (team, season, venue, city, state, game type) → matching games + `matchCount` |
 | `aggregate_attended_games` | `apex://AttendedGamesAggregate` | GROUP BY over home team / away team / venue / season / game type / state → ranked counts |
+| `query_keeping_score` | `apex://KeepingScoreQuery` | Governed metrics from the `Keeping_Score` semantic data model via `/semantic-engine/gateway` — home runs / runs witnessed, Hall of Famers seen, games + stadiums, a team's attended win rate (`keeping_score` subagent, v1.2) |
 
 **Counts come from the query, never from the LLM.** "How many" is answered by `matchCount` — the model is never asked to count rows it's looking at.
 
@@ -112,6 +113,9 @@ Baseball_Scout-AgentSpec.md            the design spec written before the build
 - **Don't set `default_agent_user` on an employee agent.** It breaks publish and preview.
 - Piping `sf … --json` into a parser can break — the CLI's "update available" notice bleeds into stdout.
 - Apex-only changes don't need a re-publish. The activated agent calls the same org-level classes, so deploying the classes fixes the live agent.
+- **An employee agent runs its actions as the logged-in user, not as the Einstein Agent User.** Grants the actions need — here, External Credential principal access for the Named Credential that `KeepingScoreQuery` calls out through — go on the people who chat with the agent (`Keeping_Score_Gateway_Access` permission set). A grant on the agent user checks out everywhere and never takes effect.
+- **`is_displayable: True` on scalar outputs lets the planner show a card and write no prose.** Live preview looks fine; the Testing Center scores an empty answer. Reasoning-only outputs plus "write the answer from the values" is the shape for metric answers.
+- Recreate the Testing Center spec (`sf agent test create --force-overwrite`) after the *last* `sf agent publish`, never before — a stale compiled spec routes every utterance to `off_topic`.
 
 This repo contains metadata only — no org credentials, no session state. `.sfdx/` and `.sf/` are ignored by design.
 
