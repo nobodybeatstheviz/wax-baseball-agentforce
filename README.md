@@ -107,6 +107,8 @@ scripts/apex/test_slack_push.apex` → `sf apex run -f scripts/apex/schedule_on_
 
 ## Honest limitations (v1)
 
+*v1 as shipped 2026-06-30. Since then: the Yankees win rate is answered from the semantic model (v1.2, 2026-09-01, via the `keeping_score` subagent), Hall of Famers seen (44) is answered the same way, and two actions landed 2026-09-10 — the YouTube highlights lookup (`Highlight_Scout`) and the "on this date" Slack push above. The list below is what v1 declined, kept as the record.*
+
 - **No win/loss records.** The dataset has no game outcomes — no score, no winner. "What's the Yankees' record in games I attended?" is not answerable and gets declined rather than guessed. Records need Retrosheet outcome data (a planned enrichment).
 - **No player-level questions.** "Which Hall of Famers did I see?" is out of scope until a play-by-play mart lands. The agent does **not** infer that a player was present because his team was.
 - **Stateless.** Each question is answered independently; nothing persists across turns.
