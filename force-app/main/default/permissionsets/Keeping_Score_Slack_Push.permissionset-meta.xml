@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Run the Keeping Score Slack push: the Slack_Webhook named credential's principal, the two Apex classes, the settings object.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Keeping Score Slack Push</label>
+    <classAccesses>
+        <apexClass>SlackWebhookPost</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>OnThisDateDigest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <externalCredentialPrincipalAccesses>
+        <enabled>true</enabled>
+        <externalCredentialPrincipal>Slack_Webhook_Auth-Slack_Principal</externalCredentialPrincipal>
+    </externalCredentialPrincipalAccesses>
+</PermissionSet>

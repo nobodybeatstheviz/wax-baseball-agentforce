@@ -82,6 +82,29 @@ One unknown had to be resolved during the build: how to query a Data Cloud DMO f
 
 ---
 
+## The "on this date" Slack push (2026-09-10)
+
+The retroactive action on this surface: each morning, the attended games that fall on today's month
+and day, posted to Slack. Zero LLM in the loop -- it is a query and a render, which is the point:
+the agent surface and the push share one data path (`Attended_Games__dlm`) and one credential model.
+
+- `OnThisDateDigest` -- invocable (for the agent or a Flow) **and** `Schedulable`. Queries the DMO
+  by SOQL, filters month/day in Apex, renders Slack mrkdwn ("*1999* -- Texas at New York Yankees,
+  Yankee Stadium I (Playoff) -- 27 years ago"). `scripts/apex/schedule_on_this_date.apex` schedules it
+  daily at 09:00 under the running user.
+- `SlackWebhookPost` -- posts through the `Slack_Webhook` named credential (host only). **The webhook
+  URL's path is the secret**, held in the protected custom setting `Keeping_Score_Settings__c` and set
+  by `scripts/set_slack_webhook.py <url>` -- never in source, never in metadata.
+- Why not native Salesforce-to-Slack: it needs a paid workspace and org-side provisioning a Developer
+  Edition doesn't have. An incoming webhook works on a free workspace. Why Apex `Schedulable` and not
+  a Scheduled Flow: scheduled Flows run as the Automated Process user, which can't hold the named
+  credential's principal. Why `Custom` on the external credential with an empty principal: the
+  metadata API rejects `NoAuthentication` (measured 2026-09-10).
+
+Setup, once: deploy → assign `Keeping_Score_Slack_Push` → create a Slack app with an incoming webhook →
+`python scripts/set_slack_webhook.py https://hooks.slack.com/services/...` → `sf apex run -f
+scripts/apex/test_slack_push.apex` → `sf apex run -f scripts/apex/schedule_on_this_date.apex`.
+
 ## Honest limitations (v1)
 
 - **No win/loss records.** The dataset has no game outcomes — no score, no winner. "What's the Yankees' record in games I attended?" is not answerable and gets declined rather than guessed. Records need Retrosheet outcome data (a planned enrichment).

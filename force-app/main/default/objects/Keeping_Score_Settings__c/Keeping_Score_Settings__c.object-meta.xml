@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Keeping Score operating secrets that must never be in source: the Slack webhook path. Protected; set by scripts/set_slack_webhook.py.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Keeping Score Settings</label>
+    <visibility>Protected</visibility>
+</CustomObject>
